@@ -36,11 +36,15 @@ print(clf.word_weights)
 ## MalletWraper Documentation
 
 ### Constructor
+
 ```python
 Mallet(mallet_dir, memory=1)
 ```
-mallet_dir : str : file path of Mallet-2.x.x directory, with trailing slash
-memory : int, float : maximum gigabytes of memory to allocate to Mallet
+
+Parameter | Type | Description | Default
+--- | --- | --- | ---
+mallet_dir | str | File path of Mallet-2.x.x directory, with trailing slash
+memory | int, float | Maximum gigabytes of memory to allocate to Mallet | 1
 
 ### Importing Data
 
@@ -50,22 +54,20 @@ memory : int, float : maximum gigabytes of memory to allocate to Mallet
 import_dir(**kwargs)
 ```
 
-##### Parameters
-
 Parameter | Type | Description | Default
 --- | --- | --- | ---
-config | file path, str | Read command option values from a file | null
-input | directory path(s), str or list | The directories containing text files to be classified, one directory per class | null
+config | str | Read command option values from a file | null
+input | str or list | The directories containing text files to be classified, one directory per class | null
 preserve_case | bool | If true, do not force all strings to lowercase. | False
-replacement_files | file path(s), str or list | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
-deletion_files | file path(s), str or list | Files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
+replacement_files | str or list | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
+deletion_files | str or list | Files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
 remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | False
-stoplist_file | file path, str | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
-extra_stopwords | file path, str | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
-stop_pattern_file | file path, str | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
+stoplist_file | str | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
+extra_stopwords | str | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
+stop_pattern_file | str | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
 skip_header | bool | If true, in each document, remove text occurring before a blank line.  This is useful for removing email or UseNet header | False
 skip_html | bool | If true, remove text occurring inside <...>, as in HTML or SGML. | False
-gram_sizes | int or comma separated str | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
+gram_sizes | int or str | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
 encoding | str | Character encoding for input file | UTF-8
 token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
 print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
