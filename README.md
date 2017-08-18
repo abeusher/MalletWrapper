@@ -56,7 +56,6 @@ import_dir(**kwargs)
 
 Parameter | Type | Description | Default
 --- | --- | --- | ---
-config | str | Read command option values from a file | null
 input | str, list | The directories containing text files to be classified, one directory per class | null
 preserve_case | bool | If true, do not force all strings to lowercase. | False
 replacement_files | str, list | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
@@ -80,7 +79,6 @@ import_file(**kwargs)
 
 Parameter | Type | Description | Default
 --- | --- | --- | ---
-config | str | Read command option values from a file | null
 input | str | The file containing data to be classified, one instance per line | null
 line-regex | str | Regular expression containing regex-groups for label, name and data. | ```^(\S*)[\s,]*(\S*)[\s,]*(.*)$```
 name | int | The index of the group containing the instance name. Use 0 to indicate that the name field is not used. | 1
