@@ -55,28 +55,28 @@ import_dir(**kwargs)
 Parameter | Type | Description | Default
 --- | --- | --- | ---
 ~~help~~ | ~~bool~~ | ~~Print this command line option usage information.  Give argument of TRUE for longer documentation~~ | ~~False~~
-prefix-code | Java code | Java code you want run before any other interpreted code. Note that the text is interpreted without modification, so unlike some other Java code options, you need to include any necessary 'new's when creating objects. | null
+prefix_code | Java code | Java code you want run before any other interpreted code. Note that the text is interpreted without modification, so unlike some other Java code options, you need to include any necessary 'new's when creating objects. | null
 config | file path | Read command option values from a file | null
 input | director path(s) | The directories containing text files to be classified, one directory per class | null
 ~~output~~ | ~~file path~~ | ~~Write the instance list to this file; Using - indicates stdout.~~ | ~~text.vectors~~
-use-pipe-from | file path | Use the pipe and alphabets from a previously created vectors file. Allows the creation, for example, of a test set of vectors that are compatible with a previously created set of training vectors | text.vectors
-preserve-case | bool | If true, do not force all strings to lowercase. | False
-replacement-files | path(s) | files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
-deletion-files | path(s) | files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
-remove-stopwords | bool | If true, remove a default list of common English "stop words" from the text. | false
-stoplist-file | file path | Instead of the default list, read stop words from a file, one per line. Implies remove_stopwords | null
-extra-stopwords | file path | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by stoplist-file. | null
-stop-pattern-file | file path | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
-skip-header | bool | If true, in each document, remove text occurring before a blank line.  This is useful for removing email or UseNet header | False
-skip-html | bool | If true, remove text occurring inside <...>, as in HTML or SGML. | False
-binary-features | bool | If true, features will be binary. | False
-gram-sizes | comma separated ints | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
-~~keep-sequence~~ | ~~bool~~ | ~~If true, final data will be a FeatureSequence rather than a FeatureVector.~~ | ~~False~~
-keep-sequence-bigrams | bool | If true, final data will be a FeatureSequenceWithBigrams rather than a FeatureVector. | False
-save-text-in-source | bool | If true, save original text of document in source. | False
-string-pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a CharSequence | null
-token-pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a TokenSequence | null
-fv-pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a FeatureVector | Null
+use_pipe_from | file path | Use the pipe and alphabets from a previously created vectors file. Allows the creation, for example, of a test set of vectors that are compatible with a previously created set of training vectors | text.vectors
+preserve_case | bool | If true, do not force all strings to lowercase. | False
+replacement_files | path(s) | files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
+deletion_files | path(s) | files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
+remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | false
+stoplist_file | file path | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
+extra_stopwords | file path | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
+stop_pattern_file | file path | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
+skip_header | bool | If true, in each document, remove text occurring before a blank line.  This is useful for removing email or UseNet header | False
+skip_html | bool | If true, remove text occurring inside <...>, as in HTML or SGML. | False
+binary_features | bool | If true, features will be binary. | False
+gram_sizes | comma separated ints | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
+~~keep_sequence~~ | ~~bool~~ | ~~If true, final data will be a FeatureSequence rather than a FeatureVector.~~ | ~~False~~
+keep_sequence_bigrams | bool | If true, final data will be a FeatureSequenceWithBigrams rather than a FeatureVector. | False
+save_text_in_source | bool | If true, save original text of document in source. | False
+string_pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a CharSequence | null
+token_pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a TokenSequence | null
+fv_pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a FeatureVector | Null
 encoding | str | Character encoding for input file | UTF-8
-token-regex | str | Regular expression used for tokenization. Example: "[\p{L}\p{N}_]+\|[\p{P}]+" (unicode letters, numbers and underscore OR all punctuation) | \p{L}[\p{L}\p{P}]+\p{L}
-print-output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
+token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
+print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
