@@ -80,7 +80,7 @@ import_file(**kwargs)
 Parameter | Type | Description | Default
 --- | --- | --- | ---
 input | str | The file containing data to be classified, one instance per line | null
-line-regex | str | Regular expression containing regex-groups for label, name and data. | ```^(\S*)[\s,]*(\S*)[\s,]*(.*)$```
+line_regex | str | Regular expression containing regex-groups for label, name and data. | ```^(\S*)[\s,]*(\S*)[\s,]*(.*)$```
 name | int | The index of the group containing the instance name. Use 0 to indicate that the name field is not used. | 1
 data |int | The index of the group containing the data. | 3
 remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | False
