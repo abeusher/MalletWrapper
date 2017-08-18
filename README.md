@@ -54,10 +54,11 @@ import_dir(**kwargs)
 
 Parameter | Type | Description | Default
 --- | --- | --- | ---
+~~help~~ | ~~bool~~ | ~~Print this command line option usage information.  Give argument of TRUE for longer documentation~~ | ~~False~~
 prefix-code | Java code | Java code you want run before any other interpreted code. Note that the text is interpreted without modification, so unlike some other Java code options, you need to include any necessary 'new's when creating objects. | null
 config | file path | Read command option values from a file | null
 input | director path(s) | The directories containing text files to be classified, one directory per class | null
-output | file path | Write the instance list to this file; Using - indicates stdout. | text.vectors
+~~output~~ | ~~file path~~ | ~~Write the instance list to this file; Using - indicates stdout.~~ | ~~text.vectors~~
 use-pipe-from | file path | Use the pipe and alphabets from a previously created vectors file. Allows the creation, for example, of a test set of vectors that are compatible with a previously created set of training vectors | text.vectors
 preserve-case | bool | If true, do not force all strings to lowercase. | False
 replacement-files | path(s) | files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
@@ -70,7 +71,7 @@ skip-header | bool | If true, in each document, remove text occurring before a b
 skip-html | bool | If true, remove text occurring inside <...>, as in HTML or SGML. | False
 binary-features | bool | If true, features will be binary. | False
 gram-sizes | comma separated ints | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
-keep-sequence | bool | If true, final data will be a FeatureSequence rather than a FeatureVector. | False
+~~keep-sequence~~ | ~~bool~~ | ~~If true, final data will be a FeatureSequence rather than a FeatureVector.~~ | ~~False~~
 keep-sequence-bigrams | bool | If true, final data will be a FeatureSequenceWithBigrams rather than a FeatureVector. | False
 save-text-in-source | bool | If true, save original text of document in source. | False
 string-pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a CharSequence | null
