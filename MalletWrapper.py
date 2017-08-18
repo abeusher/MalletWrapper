@@ -167,7 +167,7 @@ class Mallet(object):
 
 	@staticmethod
 	def process_words(words):
-		return [' '.join(x.split('_')) for x in words]
+		return [x.replace('_', ' ') for x in words]
 
 	@staticmethod
 	def process_topics(topics):
