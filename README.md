@@ -102,7 +102,6 @@ train_topics(**kwargs)
 
 Parameter | Type | Description | Default
 --- | --- | --- | ---
-input | str | The filename from which to read the list of training instances. Use - for stdin. The instances must be FeatureSequence or FeatureSequenceWithBigrams, not FeatureVector | null
 input_model | str | The filename from which to read the binary topic model. The ```input``` option is ignored. By default this is null, indicating that no file will be read. | null
 input_state | str | The filename from which to read the gzipped Gibbs sampling state created by ```output_state```. The original input file must be included, using ```input```. By default this is null, indicating that no file will be read. | null
 output_model | str | The filename in which to write the binary topic model at the end of the iterations. By default this is null, indicating that no file will be written. | null
