@@ -93,3 +93,9 @@ preserve_case | bool | If true, do not force all strings to lowercase. | False
 encoding | str | Character encoding for input file | UTF-8
 token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
 print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
+
+## Future Improvements
+
+  * Provide interface to move away from file reading (e.g. no extra stopwords file)
+  * Better error handling, especially checking for bad inputs
+  * Classification
