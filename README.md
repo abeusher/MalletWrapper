@@ -103,36 +103,36 @@ train_topics(**kwargs)
 Parameter | Type | Description | Default
 --- | --- | --- | ---
 input | str | The filename from which to read the list of training instances. Use - for stdin. The instances must be FeatureSequence or FeatureSequenceWithBigrams, not FeatureVector | null
-input-model | str | The filename from which to read the binary topic model. The --input option is ignored. By default this is null, indicating that no file will be read. | null
-input-state | str | The filename from which to read the gzipped Gibbs sampling state created by --output-state. The original input file must be included, using --input. By default this is null, indicating that no file will be read. | null
-output-model | str | The filename in which to write the binary topic model at the end of the iterations. By default this is null, indicating that no file will be written. | null
-output-state | str | The filename in which to write the Gibbs sampling state after at the end of the iterations. By default this is null, indicating that no file will be written. | null
-output-model-interval | int | The number of iterations between writing the model (and its Gibbs sampling state) to a binary file. You must also set the output_model to use this option, whose argument will be the prefix of the filenames. | 0
-output-state-interval | int | The number of iterations between writing the sampling state to a text file. You must also set the --output-state to use this option, whose argument will be the prefix of the filenames. | 0
-inferencer-filename | A topic inferencer applies a previously trained topic model to new documents. By default this is null, indicating that no file will be written. | null
-evaluator-filename | str | A held-out likelihood evaluator for new documents. By default this is null, indicating that no file will be written. | null
-output-topic-keys | str | The filename in which to write the top words for each topic and any Dirichlet parameters. By default this is null, indicating that no file will be written. | null
-num-top-words | int | The number of most probable words to print for each topic after model estimation. | 20
-show-topics-interval | int | The number of iterations between printing a brief summary of the topics so far. | 50
-topic-word-weights-file | str | The filename in which to write unnormalized weights for every topic and word type. By default this is null, indicating that no file will be written. | null
-word-topic-counts-file | str | The filename in which to write a sparse representation of topic-word assignments. By default this is null, indicating that no file will be written. | null
-diagnostics-file | str | The filename in which to write measures of topic quality, in XML format. By default this is null, indicating that no file will be written. | null
-xml-topic-report | str | The filename in which to write the top words for each topic and any Dirichlet parameters in XML format. By default this is null, indicating that no file will be written. | null
-xml-topic-phrase-report | str | The filename in which to write the top words and phrases for each topic and any Dirichlet parameters in XML format. By default this is null, indicating that no file will be written. | null
-output-topic-docs | str | The filename in which to write the most prominent documents for each topic, at the end of the iterations. By default this is null, indicating that no file will be written. | null
-num-top-docs | int | When writing topic documents with --output-topic-docs, report this number of top documents. | 100
-output-doc-topics | str | The filename in which to write the topic proportions per document, at the end of the iterations. By default this is null, indicating that no file will be written. | null
-doc-topics-threshold | float | When writing topic proportions per document with --output-doc-topics, do not print topics with proportions less than this threshold value. | 0.0
-doc-topics-max | int | When writing topic proportions per document with --output-doc-topics, do not print more than INTEGER number of topics. A negative value indicates that all topics should be printed. | -1
-num-topics | int | The number of topics to fit. | 10
-num-threads | int | The number of threads for parallel training. | 1
-num-iterations | int | The number of iterations of Gibbs sampling. | 1000
-num-icm-iterations | int | The number of iterations of iterated conditional modes (topic maximization). | 0
-no-inference | bool | Do not perform inference, just load a saved model and create a report. Equivalent to --num-iterations 0. | False
-random-seed | int | The random seed for the Gibbs sampler. Default is 0, which will use the clock. | 0
-optimize-interval | int | The number of iterations between reestimating dirichlet hyperparameters. | 0
-optimize-burn-in | int | The number of iterations to run before first estimating dirichlet hyperparameters. | 200
-use-symmetric-alpha | bool | Only optimize the concentration parameter of the prior over document-topic distributions. This may reduce the number of very small, poorly estimated topics, but may disperse common words over several topics. | False
+input_model | str | The filename from which to read the binary topic model. The ```input``` option is ignored. By default this is null, indicating that no file will be read. | null
+input_state | str | The filename from which to read the gzipped Gibbs sampling state created by ```output_state```. The original input file must be included, using ```input```. By default this is null, indicating that no file will be read. | null
+output_model | str | The filename in which to write the binary topic model at the end of the iterations. By default this is null, indicating that no file will be written. | null
+output_state | str | The filename in which to write the Gibbs sampling state after at the end of the iterations. By default this is null, indicating that no file will be written. | null
+output_model_interval | int | The number of iterations between writing the model (and its Gibbs sampling state) to a binary file. You must also set the output_model to use this option, whose argument will be the prefix of the filenames. | 0
+output_state_interval | int | The number of iterations between writing the sampling state to a text file. You must also set the ```output_state``` to use this option, whose argument will be the prefix of the filenames. | 0
+inferencer_filename | str | A topic inferencer applies a previously trained topic model to new documents. By default this is null, indicating that no file will be written. | null
+evaluator_filename | str | A held-out likelihood evaluator for new documents. By default this is null, indicating that no file will be written. | null
+output_topic_keys | str | The filename in which to write the top words for each topic and any Dirichlet parameters. By default this is null, indicating that no file will be written. | null
+num_top_words | int | The number of most probable words to print for each topic after model estimation. | 20
+show_topics_interval | int | The number of iterations between printing a brief summary of the topics so far. | 50
+topic_word_weights_file | str | The filename in which to write unnormalized weights for every topic and word type. By default this is null, indicating that no file will be written. | null
+word_topic_counts_file | str | The filename in which to write a sparse representation of topic-word assignments. By default this is null, indicating that no file will be written. | null
+diagnostics_file | str | The filename in which to write measures of topic quality, in XML format. By default this is null, indicating that no file will be written. | null
+xml_topic_report | str | The filename in which to write the top words for each topic and any Dirichlet parameters in XML format. By default this is null, indicating that no file will be written. | null
+xml_topic_phrase_report | str | The filename in which to write the top words and phrases for each topic and any Dirichlet parameters in XML format. By default this is null, indicating that no file will be written. | null
+output_topic_docs | str | The filename in which to write the most prominent documents for each topic, at the end of the iterations. By default this is null, indicating that no file will be written. | null
+num_top_docs | int | When writing topic documents with ```output_topic_docs```, report this number of top documents. | 100
+output_doc_topics | str | The filename in which to write the topic proportions per document, at the end of the iterations. By default this is null, indicating that no file will be written. | null
+doc_topics_threshold | float | When writing topic proportions per document with ```output_doc_topics```, do not print topics with proportions less than this threshold value. | 0.0
+doc_topics_max | int | When writing topic proportions per document with ```output_doc_topics```, do not print more than INTEGER number of topics. A negative value indicates that all topics should be printed. | -1
+num_topics | int | The number of topics to fit. | 10
+num_threads | int | The number of threads for parallel training. | 1
+num_iterations | int | The number of iterations of Gibbs sampling. | 1000
+num_icm_iterations | int | The number of iterations of iterated conditional modes (topic maximization). | 0
+no_inference | bool | Do not perform inference, just load a saved model and create a report. Equivalent to ```num_iterations``` 0. | False
+random_seed | int | The random seed for the Gibbs sampler. Default is 0, which will use the clock. | 0
+optimize_interval | int | The number of iterations between reestimating dirichlet hyperparameters. | 0
+optimize_burn_in | int | The number of iterations to run before first estimating dirichlet hyperparameters. | 200
+use_symmetric_alpha | bool | Only optimize the concentration parameter of the prior over document-topic distributions. This may reduce the number of very small, poorly estimated topics, but may disperse common words over several topics. | False
 alpha | float | SumAlpha parameter: sum over topics of smoothing over doc-topic distributions. alpha_k = [this value] / [num topics] | 5.0
 beta | float | Beta parameter: smoothing parameter for each topic-word. beta_w = [this value] | 0.01
 
