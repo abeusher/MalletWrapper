@@ -61,9 +61,9 @@ input | director path(s) | The directories containing text files to be classifie
 ~~output~~ | ~~file path~~ | ~~Write the instance list to this file; Using - indicates stdout.~~ | ~~text.vectors~~
 use_pipe_from | file path | Use the pipe and alphabets from a previously created vectors file. Allows the creation, for example, of a test set of vectors that are compatible with a previously created set of training vectors | text.vectors
 preserve_case | bool | If true, do not force all strings to lowercase. | False
-replacement_files | path(s) | files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
-deletion_files | path(s) | files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
-remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | false
+replacement_files | path(s) | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
+deletion_files | path(s) | Files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
+remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | False
 stoplist_file | file path | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
 extra_stopwords | file path | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
 stop_pattern_file | file path | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
