@@ -71,3 +71,27 @@ gram_sizes | int, str | Include among the features all n-grams of sizes specifie
 encoding | str | Character encoding for input file | UTF-8
 token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
 print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
+
+#### Via File
+
+```python
+import_file(**kwargs)
+```
+
+Parameter | Type | Description | Default
+--- | --- | --- | ---
+config | str | Read command option values from a file | null
+input | str | The file containing data to be classified, one instance per line | null
+line-regex | str | Regular expression containing regex-groups for label, name and data. | ^(\S*)[\s,]*(\S*)[\s,]*(.*)$
+name | int | The index of the group containing the instance name. Use 0 to indicate that the name field is not used. | 1
+data |int | The index of the group containing the data. | 3
+remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | False
+replacement_files | str, list | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
+deletion_files | str, list | Files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
+stoplist_file | str | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
+extra_stopwords | str | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
+stop_pattern_file | str | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
+preserve_case | bool | If true, do not force all strings to lowercase. | False
+encoding | str | Character encoding for input file | UTF-8
+token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
+print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
