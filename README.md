@@ -16,13 +16,13 @@ ant
 ```python
 from MalletWrapper import Mallet
 
-clf = Mallet('/Users/mikeronayne/mallet-2.0.8/')
-clf.import_dir(input='/Users/mikeronayne/mallet-2.0.8/sample-data/web/en')
-clf.train_topics()
+model = Mallet('/Users/mikeronayne/mallet-2.0.8/')
+model.import_dir(input='/Users/mikeronayne/mallet-2.0.8/sample-data/web/en')
+model.train_topics()
 
-print(clf.topic_keys)
-print(clf.doc_topics)
-print(clf.word_weights)
+print(model.topic_keys)
+print(model.doc_topics)
+print(model.word_weights)
 ```
 
 ```python
@@ -64,7 +64,7 @@ remove_stopwords | bool | If true, remove a default list of common English "stop
 stoplist_file | str | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
 extra_stopwords | str | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
 stop_pattern_file | str | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
-skip_header | bool | If true, in each document, remove text occurring before a blank line.  This is useful for removing email or UseNet header | False
+skip_header | bool | If true, in each document, remove text occurring before a blank line. This is useful for removing email or UseNet header | False
 skip_html | bool | If true, remove text occurring inside <...>, as in HTML or SGML. | False
 gram_sizes | int, str | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
 encoding | str | Character encoding for input file | UTF-8
@@ -94,8 +94,50 @@ encoding | str | Character encoding for input file | UTF-8
 token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
 print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
 
+### Train Topics
+
+```python
+train_topics(**kwargs)
+```
+
+Parameter | Type | Description | Default
+--- | --- | --- | ---
+input | str | The filename from which to read the list of training instances. Use - for stdin. The instances must be FeatureSequence or FeatureSequenceWithBigrams, not FeatureVector | null
+input-model | str | The filename from which to read the binary topic model. The --input option is ignored. By default this is null, indicating that no file will be read. | null
+input-state | str | The filename from which to read the gzipped Gibbs sampling state created by --output-state. The original input file must be included, using --input. By default this is null, indicating that no file will be read. | null
+output-model | str | The filename in which to write the binary topic model at the end of the iterations. By default this is null, indicating that no file will be written. | null
+output-state | str | The filename in which to write the Gibbs sampling state after at the end of the iterations. By default this is null, indicating that no file will be written. | null
+output-model-interval | int | The number of iterations between writing the model (and its Gibbs sampling state) to a binary file. You must also set the output_model to use this option, whose argument will be the prefix of the filenames. | 0
+output-state-interval | int | The number of iterations between writing the sampling state to a text file. You must also set the --output-state to use this option, whose argument will be the prefix of the filenames. | 0
+inferencer-filename | A topic inferencer applies a previously trained topic model to new documents. By default this is null, indicating that no file will be written. | null
+evaluator-filename | str | A held-out likelihood evaluator for new documents. By default this is null, indicating that no file will be written. | null
+output-topic-keys | str | The filename in which to write the top words for each topic and any Dirichlet parameters. By default this is null, indicating that no file will be written. | null
+num-top-words | int | The number of most probable words to print for each topic after model estimation. | 20
+show-topics-interval | int | The number of iterations between printing a brief summary of the topics so far. | 50
+topic-word-weights-file | str | The filename in which to write unnormalized weights for every topic and word type. By default this is null, indicating that no file will be written. | null
+word-topic-counts-file | str | The filename in which to write a sparse representation of topic-word assignments. By default this is null, indicating that no file will be written. | null
+diagnostics-file | str | The filename in which to write measures of topic quality, in XML format. By default this is null, indicating that no file will be written. | null
+xml-topic-report | str | The filename in which to write the top words for each topic and any Dirichlet parameters in XML format. By default this is null, indicating that no file will be written. | null
+xml-topic-phrase-report | str | The filename in which to write the top words and phrases for each topic and any Dirichlet parameters in XML format. By default this is null, indicating that no file will be written. | null
+output-topic-docs | str | The filename in which to write the most prominent documents for each topic, at the end of the iterations. By default this is null, indicating that no file will be written. | null
+num-top-docs | int | When writing topic documents with --output-topic-docs, report this number of top documents. | 100
+output-doc-topics | str | The filename in which to write the topic proportions per document, at the end of the iterations. By default this is null, indicating that no file will be written. | null
+doc-topics-threshold | float | When writing topic proportions per document with --output-doc-topics, do not print topics with proportions less than this threshold value. | 0.0
+doc-topics-max | int | When writing topic proportions per document with --output-doc-topics, do not print more than INTEGER number of topics. A negative value indicates that all topics should be printed. | -1
+num-topics | int | The number of topics to fit. | 10
+num-threads | int | The number of threads for parallel training. | 1
+num-iterations | int | The number of iterations of Gibbs sampling. | 1000
+num-icm-iterations | int | The number of iterations of iterated conditional modes (topic maximization). | 0
+no-inference | bool | Do not perform inference, just load a saved model and create a report. Equivalent to --num-iterations 0. | False
+random-seed | int | The random seed for the Gibbs sampler. Default is 0, which will use the clock. | 0
+optimize-interval | int | The number of iterations between reestimating dirichlet hyperparameters. | 0
+optimize-burn-in | int | The number of iterations to run before first estimating dirichlet hyperparameters. | 200
+use-symmetric-alpha | bool | Only optimize the concentration parameter of the prior over document-topic distributions. This may reduce the number of very small, poorly estimated topics, but may disperse common words over several topics. | False
+alpha | float | SumAlpha parameter: sum over topics of smoothing over doc-topic distributions. alpha_k = [this value] / [num topics] | 5.0
+beta | float | Beta parameter: smoothing parameter for each topic-word. beta_w = [this value] | 0.01
+
 ## Future Improvements
 
-  * Provide interface to move away from file reading (e.g. no extra stopwords file)
-  * Better error handling, especially checking for bad inputs
-  * Classification
+ * Provide interface to move away from file reading (e.g. no extra stopwords file)
+ * Better error handling, especially checking for bad inputs
+ * Classification
