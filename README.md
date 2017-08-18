@@ -54,21 +54,18 @@ import_dir(**kwargs)
 
 Parameter | Type | Description | Default
 --- | --- | --- | ---
-config | file path | Read command option values from a file | null
-input | directory path(s) | The directories containing text files to be classified, one directory per class | null
+config | file path, str | Read command option values from a file | null
+input | directory path(s), str or list | The directories containing text files to be classified, one directory per class | null
 preserve_case | bool | If true, do not force all strings to lowercase. | False
-replacement_files | path(s) | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
-deletion_files | path(s) | Files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
+replacement_files | file path(s), str or list | Files containing string replacements, one per line: 'A B [tab] C' replaces A B with C; 'A B' replaces A B with A_B | null
+deletion_files | file path(s), str or list | Files containing strings to delete after replacements but before tokenization (ie multiword stop terms) | null
 remove_stopwords | bool | If true, remove a default list of common English "stop words" from the text. | False
-stoplist_file | file path | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
-extra_stopwords | file path | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
-stop_pattern_file | file path | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
+stoplist_file | file path, str | Instead of the default list, read stop words from a file, one per line. Implies ```remove_stopwords``` | null
+extra_stopwords | file path, str | Read whitespace-separated words from this file, and add them to either the default English stoplist or the list specified by ```stoplist_file```. | null
+stop_pattern_file | file path, str | Read regular expressions from a file, one per line. Tokens matching these regexps will be removed. | null
 skip_header | bool | If true, in each document, remove text occurring before a blank line.  This is useful for removing email or UseNet header | False
 skip_html | bool | If true, remove text occurring inside <...>, as in HTML or SGML. | False
-gram_sizes | comma separated ints | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
-string_pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a CharSequence | null
-token_pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a TokenSequence | null
-fv_pipe | Pipe constructor | Java code for the constructor of a Pipe to be run as soon as input becomes a FeatureVector | Null
+gram_sizes | int or comma separated str | Include among the features all n-grams of sizes specified. For example, to get all unigrams and bigrams, use ```gram_sizes='1,2'```. This option occurs after the removal of stop words, if removed. | 1
 encoding | str | Character encoding for input file | UTF-8
 token_regex | str | Regular expression used for tokenization. Example: ```[\p{L}\p{N}_]+\|[\p{P}]+``` (unicode letters, numbers and underscore OR all punctuation) | ```\p{L}[\p{L}\p{P}]+\p{L}```
 print_output | bool | If true, print a representation of the processed data to standard output. This option is intended for debugging. | False
