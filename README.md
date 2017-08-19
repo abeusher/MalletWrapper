@@ -46,7 +46,7 @@ Mallet(mallet_dir, memory=1)
 
 Parameter | Type | Description | Default
 --- | --- | --- | ---
-mallet_dir | str | File path of Mallet-2.x.x directory, with trailing slash
+mallet_dir | str | File path of Mallet-2.x.x directory
 memory | int, float | Maximum gigabytes of memory to allocate to Mallet | 1
 
 ### Importing Data
