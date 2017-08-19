@@ -12,11 +12,11 @@ class Mallet(object):
 	def __init__(self, mallet_dir, memory=1):
 		'''
 		Constructor
-		mallet_dir : str : file path of Mallet-2.x.x directory, with trailing slash
+		mallet_dir : str : file path of Mallet-2.x.x directory
 		memory : int, float : maximum gigabytes of memory to allocate to Mallet
 		'''
 		self.memory = memory
-		self.mallet_dir = mallet_dir
+		self.mallet_dir = mallet_dir if mallet_dir.endswith('/') else mallet_dir + '/'
 		self.set_memory()
 		self.set_output_dir()
 
