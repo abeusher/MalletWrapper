@@ -11,7 +11,7 @@ cd /dir/containing/mallet-2.x.x
 ant
 ```
 
-## MalletWrapper Tutorial
+## MalletWrapper Usage
 
 ```python
 from MalletWrapper import Mallet
